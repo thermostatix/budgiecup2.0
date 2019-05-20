@@ -12,7 +12,11 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+
+    $tournaments = \App\Tournament::all();
+
+    return view('welcome', ['tournaments' => $tournaments]);
+
 });
 
 Auth::routes();
