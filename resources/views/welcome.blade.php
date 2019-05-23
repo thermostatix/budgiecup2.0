@@ -81,12 +81,12 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    BudgieCup 2.0
+                    Budgie Cup 2.0
                 </div>
 
                 <div class="links">
                     @foreach ($tournaments as $tournament)
-                        <a href="http://www.budgiecup.co.za/{{ $tournament->date }}">{{ $tournament->date }}</a>
+                        <a href={{ url('/'.date('Y',strtotime($tournament->date))) }}>{{ date('Y',strtotime($tournament->date)) }}</a>
                     @endforeach
                 </div>
             </div>

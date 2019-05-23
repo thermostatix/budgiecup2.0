@@ -21,14 +21,14 @@ class CreateTournament extends Migration
             $table->timestamps();
         });
 
-        Schema::create('player', function (Blueprint $table) {
+        Schema::create('players', function (Blueprint $table) {
            $table->increments('id');
            $table->string('name');
            $table->string('nickname');
            $table->string('email');
         });
 
-        Schema::create('round', function (Blueprint $table) {
+        Schema::create('rounds', function (Blueprint $table) {
             $table->increments('id');
 
             $table->integer('tournament_id')->unsigned();
@@ -38,14 +38,14 @@ class CreateTournament extends Migration
             $table->string('rating');
         });
 
-        Schema::create('player_round_score', function (Blueprint $table) {
+        Schema::create('player_round_scores', function (Blueprint $table) {
             $table->increments('id');
 
             $table->integer('tournament_id')->unsigned();
             $table->foreign('tournament_id')->references('id')->on('tournaments');
 
             $table->integer('round_id')->unsigned();
-            $table->foreign('round_id')->references('id')->on('round');
+            $table->foreign('round_id')->references('id')->on('rounds');
 
             $table->unsignedTinyInteger('gross');
             $table->unsignedTinyInteger('nett');
@@ -53,14 +53,14 @@ class CreateTournament extends Migration
             $table->unsignedTinyInteger('handicap_for_round');
         });
 
-        Schema::create('tournament_player', function (Blueprint $table) {
+        Schema::create('tournament_players', function (Blueprint $table) {
             $table->increments('id');
 
             $table->integer('tournament_id')->unsigned();
             $table->foreign('tournament_id')->references('id')->on('tournaments');
 
             $table->integer('player_id')->unsigned();
-            $table->foreign('player_id')->references('id')->on('player');
+            $table->foreign('player_id')->references('id')->on('players');
             $table->float('handicap_for_tournament');
         });
 

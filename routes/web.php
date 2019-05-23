@@ -15,7 +15,16 @@ Route::get('/', function () {
 
     $tournaments = \App\Tournament::all();
 
-    return view('welcome', ['tournaments' => $tournaments]);
+    $players = \App\Player::all();
+
+    return view('welcome', ['tournaments' => $tournaments, 'players' => $tournaments]);
+
+});
+
+Route::get('/players', function () {
+    $players = \App\Player::all();
+
+    return view('players', ['players' => $players]);
 
 });
 
@@ -26,3 +35,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/leaderboard', function () {
+
+
+    return view('submit');
+});
