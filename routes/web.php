@@ -21,7 +21,11 @@ Route::get('/', function () {
 
 });
 
+Route::get('tournament/{id}', 'TournamentController@getTournament');
+
 Route::get('/players', function () {
+
+    // vat hierdie na 'n players controller
     $players = \App\Player::all();
 
     return view('players', ['players' => $players]);
@@ -32,12 +36,6 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
 Route::get('/leaderboard', function () {
 
-
-    return view('submit');
 });

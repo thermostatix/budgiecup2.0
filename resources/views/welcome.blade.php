@@ -86,7 +86,7 @@
 
                 <div class="links">
                     @foreach ($tournaments as $tournament)
-                        <a href={{ url('/'.$tournament->id) }}>{{ $tournament->name }}</a>
+                        <a href={{ url('/tournament/'.$tournament->id) }}>{{ $tournament->name }}</a>
                     @endforeach
                 </div>
             </div>

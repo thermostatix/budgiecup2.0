@@ -53,6 +53,8 @@ class TournamentController extends Controller
         //
     }
 
+
+
     /**
      * Show the form for creating a new resource.
      *
@@ -106,6 +108,11 @@ class TournamentController extends Controller
     public function update(Request $request, $id)
     {
         //
+    }
+
+    public function getTournament($id) {
+        $tournament = \App\Tournament::find($id);//->with(['players', 'leaderboard']);
+        return view('tournament', ['tournament' => $tournament]);
     }
 
 }

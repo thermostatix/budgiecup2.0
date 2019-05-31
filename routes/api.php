@@ -16,3 +16,12 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::post('user/register', 'UserController@register');
+            
+Route::group(['middleware' => ['auth.user']], function() {
+    Route::post('user/login', 'UserController@login');
+});
+Route::group(['middleware' => ['auth.device']], function() {
+    // Add the routes requiring device authentication here
+});
