@@ -17,7 +17,7 @@ Route::get('/', function () {
 
     $players = \App\Player::all();
 
-    return view('welcome', ['tournaments' => $tournaments, 'players' => $tournaments]);
+    return view('welcome', ['tournaments' => $tournaments, 'players' => $players]);
 
 });
 
